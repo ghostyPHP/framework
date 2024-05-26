@@ -40,74 +40,101 @@ class Container implements ContainerContract
 
     public function make($abstract): mixed
     {
-
-        if (array_key_exists($abstract, $this->singletons))
+        if (!array_key_exists($abstract, $this->bindings) && !array_key_exists($abstract, $this->singletons))
         {
-
-            if (is_object($this->singletons[$abstract]))
-            {
-                return $this->singletons[$abstract];
-            }
-            return $this->prepareObject($abstract, true);
+            throw new BindingNotFoundExeption("Binding '$abstract' not found");
         }
 
-        return $this->prepareObject($abstract);
+
+        if (!array_key_exists($abstract, $this->singletons))
+        {
+            return $this->prepareObject($abstract);
+        }
+
+
+        if (!is_object($this->singletons[$abstract]))
+        {
+            return $this->prepareSingleton($abstract);
+        }
+
+
+        return $this->singletons[$abstract];
     }
 
 
 
-    private function prepareObject(string $abstract, bool $singleton = false)
+    private function prepareObject(string $abstract)
     {
-        $class = $singleton ? $this->singletons[$abstract] : $this->bindings[$abstract];
+
+        $class = $this->bindings[$abstract];
 
         $classReflector = new \ReflectionClass($class);
 
-        // Получаем рефлектор конструктора класса, проверяем - есть ли конструктор
-        // Если конструктора нет - сразу возвращаем экземпляр класса
+
         $constructReflector = $classReflector->getConstructor();
         if (empty($constructReflector))
         {
-            if ($singleton)
-            {
-                $this->singletons[$abstract] = new $class;
-            }
-
-            return $this->make($abstract);
+            return new $class;
         }
 
-        // Получаем рефлекторы аргументов конструктора
-        // Если аргументов нет - сразу возвращаем экземпляр класса
+
         $constructArguments = $constructReflector->getParameters();
         if (empty($constructArguments))
         {
-            if ($singleton)
-            {
-                $this->singletons[$abstract] = new $class;
-            }
-
-            return $this->make($abstract);
+            return new $class;
         }
 
-        // Перебираем все аргументы конструктора, собираем их значения
+
         $args = [];
         foreach ($constructArguments as $argument)
         {
-            // Получаем тип аргумента
+
             $argumentType = $argument->getType()->getName();
 
-            // Получаем сам аргумент по его типу из контейнера
+
             $args[$argument->getName()] = $this->make($argumentType);
         }
 
-        // И возвращаем экземпляр класса со всеми зависимостями
-        if ($singleton)
+        return new $class(...$args);
+    }
+
+
+
+    private function prepareSingleton(string $abstract)
+    {
+        $class = $this->singletons[$abstract];
+
+        $classReflector = new \ReflectionClass($class);
+
+
+        $constructReflector = $classReflector->getConstructor();
+        if (empty($constructReflector))
         {
-            $this->singletons[$abstract] = new $this->singletons[$abstract](...$args);
-            return $this->make($abstract);
+            $this->singletons[$abstract] = new $class;
+            return $this->singletons[$abstract];
         }
-        else
+
+
+        $constructArguments = $constructReflector->getParameters();
+        if (empty($constructArguments))
         {
-            return new $class(...$args);
+            $this->singletons[$abstract] = new $class;
+            return $this->singletons[$abstract];
         }
+
+
+        $args = [];
+        foreach ($constructArguments as $argument)
+        {
+
+            $argumentType = $argument->getType()->getName();
+
+
+            $args[$argument->getName()] = $this->make($argumentType);
+        }
+
+
+        $this->singletons[$abstract] = new $this->singletons[$abstract](...$args);
+        return $this->singletons[$abstract];
     }
 }
