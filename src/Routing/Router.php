@@ -22,7 +22,7 @@ class Router implements RouterContract
     {
         foreach ($this->routes as $route)
         {
-            if ($route['url'] == Request::url() || $route['method'] == Request::method())
+            if ($route['url'] == Request::url() && $route['method'] == Request::method())
             {
                 return true;
             }
