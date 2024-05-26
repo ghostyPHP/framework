@@ -1,0 +1,17 @@
+{
+    "name": "ghosty/framework",
+    "description": "Lightweight PHP MVC framework",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Ghosty\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "AnvilM",
+            "email": "211anvil112@gmail.com"
+        }
+    ],
+    "require": {}
+}
