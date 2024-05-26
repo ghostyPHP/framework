@@ -21,7 +21,6 @@ class Kernel implements KernelContract
     private function initRoutes()
     {
         $this->app->bind('routes', \Routes\API::class);
-
         $this->app->make('routes');
     }
 

@@ -3,45 +3,50 @@
 namespace Ghosty\Routing;
 
 use Ghosty\Contracts\Routing\RouteContract;
+use Ghosty\Foundation\Routing\Route as RoutingRoute;
+use Ghosty\Foundation\Routing\RouteList;
 
 class Route implements RouteContract
 {
+    private RouteList $RouteList;
 
-    private array $routes;
+
+    public function __construct()
+    {
+        $this->RouteList = new RouteList;
+    }
+
 
     private function new()
     {
-        $this->routes[] = [];
+        $this->RouteList->push(new RoutingRoute);
     }
 
 
-    private function addField(string $filed, string $value)
+    public function getRoutes(): RouteList
     {
-        $this->routes[array_key_last($this->routes)][$filed] = $value;
-    }
-
-
-    public function getRoutes(): array
-    {
-        return $this->routes;
+        return $this->RouteList;
     }
 
 
     public function get(string $url): Route
     {
         $this->new();
-        $this->routes[array_key_last($this->routes)]['method'] = 'GET';
-        $this->routes[array_key_last($this->routes)]['url'] = $url;
+        $this->getLastRoute()->setMethod('GET');
+        $this->getLastRoute()->setUrl($url);
+        $this->getLastRoute()->setParameters($this->getParametersFromUrl($url));
 
         return $this;
     }
 
 
+
     public function post(string $url): Route
     {
         $this->new();
-        $this->addField('method', 'POST');
-        $this->addField('url', $url);
+        $this->getLastRoute()->setMethod('POST');
+        $this->getLastRoute()->setUrl($url);
+        $this->getLastRoute()->setParameters($this->getParametersFromUrl($url));
 
         return $this;
     }
@@ -49,7 +54,7 @@ class Route implements RouteContract
 
     public function controller(string $controller): Route
     {
-        $this->addField('controller', $controller);
+        $this->getLastRoute()->setController($controller);
 
         return $this;
     }
@@ -57,8 +62,34 @@ class Route implements RouteContract
 
     public function action(string $action): Route
     {
-        $this->addField('action', $action);
+        $this->getLastRoute()->setAction($action);
 
         return $this;
+    }
+
+
+
+
+
+
+    private function getParametersFromUrl(string $url)
+    {
+        $parameters = [];
+        foreach (explode('/', $url) as $urlKey => $urlEl)
+        {
+            if ($urlEl[0] == '{' && $urlEl[strlen($urlEl) - 1] == '}')
+            {
+                $parameters[$urlEl] = $urlKey;
+            }
+        }
+
+        return $parameters;
+    }
+
+
+
+    private function getLastRoute(): RoutingRoute
+    {
+        return $this->RouteList->top();
     }
 }

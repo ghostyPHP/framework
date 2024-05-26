@@ -2,6 +2,7 @@
 
 namespace Ghosty\Contracts\Routing;
 
+use Ghosty\Foundation\Routing\RouteList;
 use Ghosty\Routing\Route;
 
 interface RouteContract
@@ -12,7 +13,7 @@ interface RouteContract
      *
      * @return array Routes
      */
-    public function getRoutes(): array;
+    public function getRoutes(): RouteList;
 
 
 
