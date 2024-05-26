@@ -1,8 +1,13 @@
 <?php
 
-namespace Ghosty\Contracts\Foundation\Routing;
+namespace Ghosty\Contracts\Routing;
 
 interface RouterContract
 {
-    public function biba($text): string;
+    /**
+     * Dispatch route
+     *
+     * @return void
+     */
+    public function dispatch();
 }

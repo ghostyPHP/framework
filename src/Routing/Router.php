@@ -1,13 +1,33 @@
 <?php
 
-namespace Ghosty\Foundation\Routing;
+namespace Ghosty\Routing;
 
-use Ghosty\Contracts\Foundation\Routing\RouterContract;
+use Ghosty\Contracts\Routing\RouteContract;
+use Ghosty\Routing\RouteNotFoundExeption;
+use Ghosty\Contracts\Routing\RouterContract;
+use Ghosty\Foundation\Http\Request;
 
 class Router implements RouterContract
 {
-    public function biba($text): string
+    private array $routes;
+
+    public function __construct(private RouteContract $Route)
     {
-        return $text . "it's just a text<br>";
+        $this->routes = $this->Route->getRoutes();
+    }
+
+
+
+    public function dispatch()
+    {
+        foreach ($this->routes as $route)
+        {
+            if ($route['url'] == Request::url() || $route['method'] == Request::method())
+            {
+                return true;
+            }
+        }
+
+        throw new RouteNotFoundExeption("Route not found");
     }
 }

@@ -4,14 +4,25 @@ namespace Ghosty\Foundation\Http;
 
 use Ghosty\Contracts\Foundation\ApplicationContract;
 use Ghosty\Contracts\Foundation\Http\KernelContract;
-use Ghosty\IAboba;
-use Ghosty\IBiba;
+use Ghosty\Routing\Router;
 
 class Kernel implements KernelContract
 {
-    public string $test = 'test';
-    public function __construct()
+    public function __construct(protected ApplicationContract $app)
     {
+        $this->initRoutes();
+
+        $this->app->make(\Ghosty\Contracts\Routing\RouterContract::class)
+            ->dispatch();
+    }
+
+
+
+    private function initRoutes()
+    {
+        $this->app->bind('routes', \Routes\API::class);
+
+        $this->app->make('routes');
     }
 
 
