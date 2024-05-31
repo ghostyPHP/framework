@@ -3,13 +3,11 @@
 namespace Ghosty\Routing;
 
 use Exception;
-use Ghosty\Contracts\Foundation\Http\RequestContract;
-use Ghosty\Contracts\Foundation\Routing\RouteContract as RoutingRouteContract;
+use Ghosty\Container\Container;
+use Ghosty\Contracts\Http\RequestContract;
 use Ghosty\Contracts\Routing\RouteContract;
 use Ghosty\Routing\RouteNotFoundExeption;
 use Ghosty\Contracts\Routing\RouterContract;
-use Ghosty\Foundation\Application;
-use Ghosty\Foundation\Http\Request as HttpRequest;
 use Ghosty\Foundation\Routing\Route;
 use Ghosty\Foundation\Routing\RouteList;
 use Ghosty\Http\Request;
@@ -18,7 +16,8 @@ class Router implements RouterContract
 {
     private RouteList $RouteList;
 
-    public function __construct(private RouteContract $Route)
+
+    public function __construct(private RouteContract $Route, private RequestContract $Request)
     {
         $this->RouteList = $this->Route->getRoutes();
     }
@@ -27,7 +26,7 @@ class Router implements RouterContract
 
     public function dispatch()
     {
-        $GLOBALS['Route'] = $this->determine();
+        $this->Request->setRoute($this->determine());
     }
 
 
@@ -46,7 +45,7 @@ class Router implements RouterContract
             }
             catch (Exception $e)
             {
-                throw new RouteNotFoundExeption('Route ' . Request::url() . ' not found');
+                throw new RouteNotFoundExeption('Route ' . $this->Request->url() . ' not found');
             }
         }
     }
@@ -61,7 +60,7 @@ class Router implements RouterContract
 
     private function validateRouteByUrl(Route $route)
     {
-        $splitedUrl = explode('/', Request::url());
+        $splitedUrl = explode('/', $this->Request->url());
         $splitedRouteUrl = explode('/', $route->getUrl());
 
         if (count($splitedUrl) != count($splitedRouteUrl))
@@ -92,6 +91,6 @@ class Router implements RouterContract
 
     private function validateRouteByMethod(Route $route)
     {
-        return $route->getMethod() == Request::method();
+        return $route->getMethod() == $this->Request->method();
     }
 }

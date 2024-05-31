@@ -8,12 +8,10 @@ use Ghosty\Foundation\Routing\RouteList;
 
 class Route implements RouteContract
 {
-    private RouteList $RouteList;
 
 
-    public function __construct()
+    public function __construct(private RouteList $RouteList)
     {
-        $this->RouteList = new RouteList;
     }
 
 

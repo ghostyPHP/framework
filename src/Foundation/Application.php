@@ -4,22 +4,41 @@ namespace Ghosty\Foundation;
 
 use Ghosty\Container\Container;
 use Ghosty\Contracts\Foundation\ApplicationContract;
+use Ghosty\Contracts\Foundation\Http\KernelContract;
+use Ghosty\Contracts\Http\RequestContract;
+use Ghosty\Contracts\Routing\RouteContract;
+use Ghosty\Contracts\Routing\RouterContract;
+use Ghosty\Http\Request;
+use Ghosty\Routing\Route;
+use Ghosty\Routing\Router;
 
-class Application extends Container implements ApplicationContract
+class Application implements ApplicationContract
 {
+
+    private KernelContract $Kernel;
+
     public function __construct()
     {
         $this->registerCoreServices();
+
+        $this->Kernel = Container::getInstance()->make(KernelContract::class);
     }
 
 
 
     private function registerCoreServices()
     {
-        $this->singleton(\Ghosty\Contracts\Foundation\ApplicationContract::class, \Ghosty\Foundation\Application::class);
-        $this->singleton(\Ghosty\Contracts\Routing\RouteContract::class, \Ghosty\Routing\Route::class);
-        $this->singleton(\Ghosty\Contracts\Routing\RouterContract::class, \Ghosty\Routing\Router::class);
+        Container::getInstance()->singleton(RouterContract::class, Router::class);
 
-        $this->singleton(\Ghosty\Contracts\Http\RequestContract::class, \Ghosty\Http\Request::class);
+        Container::getInstance()->singleton(RouteContract::class, Route::class);
+
+        Container::getInstance()->singleton(RequestContract::class, Request::class);
+    }
+
+
+
+    public function handle()
+    {
+        return $this->Kernel->handle();
     }
 }
