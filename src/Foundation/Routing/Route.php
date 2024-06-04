@@ -14,7 +14,9 @@ class Route implements RouteContract
 
     private string $action;
 
-    private array $parameters;
+    private array $parameters = [];
+
+    private array $middlewares = [];
 
 
     public function getUrl(): string
@@ -47,6 +49,13 @@ class Route implements RouteContract
     }
 
 
+    public function getMiddlewares(): array
+    {
+        return $this->middlewares;
+    }
+
+
+
     public function setUrl(string $url)
     {
         $this->url = $url;
@@ -74,5 +83,11 @@ class Route implements RouteContract
     public function setAction(string $action)
     {
         $this->action = $action;
+    }
+
+
+    public function addMiddleware(string $middleware)
+    {
+        $this->middlewares[] = $middleware;
     }
 }

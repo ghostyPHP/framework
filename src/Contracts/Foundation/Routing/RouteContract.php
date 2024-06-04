@@ -61,6 +61,17 @@ interface RouteContract
 
 
     /**
+     * Get route middle
+     *
+     * @return array
+     */
+    public function getMiddlewares(): array;
+
+
+
+
+
+    /**
      * Set route method
      *
      * @return void
@@ -110,4 +121,15 @@ interface RouteContract
      * @return void
      */
     public function setAction(string $action);
+
+
+
+
+
+    /**
+     * Add route middlewares
+     *
+     * @return string
+     */
+    public function addMiddleware(string $middleware);
 }

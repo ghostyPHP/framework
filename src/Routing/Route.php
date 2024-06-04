@@ -69,6 +69,25 @@ class Route implements RouteContract
 
 
 
+    public function middleware(string|array $middlewares): Route
+    {
+        if (!is_array($middlewares))
+        {
+            $middlewares = [$middlewares];
+        }
+
+        foreach ($middlewares as $middleware)
+        {
+            $this->getLastRoute()->addMiddleware($middleware);
+        }
+
+        return $this;
+    }
+
+
+
+
+
 
     private function getParametersFromUrl(string $url)
     {

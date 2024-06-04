@@ -11,6 +11,7 @@ use Ghosty\Contracts\Routing\RouterContract;
 use Ghosty\Foundation\Routing\Route;
 use Ghosty\Foundation\Routing\RouteList;
 use Ghosty\Http\Request;
+use Ghosty\Support\Facades\Request as FacadesRequest;
 
 class Router implements RouterContract
 {
@@ -45,7 +46,7 @@ class Router implements RouterContract
             }
             catch (Exception $e)
             {
-                throw new RouteNotFoundExeption('Route ' . $this->Request->url() . ' not found');
+                throw new RouteNotFoundExeption('Route ' . FacadesRequest::url() . ' not found');
             }
         }
     }
@@ -60,7 +61,7 @@ class Router implements RouterContract
 
     private function validateRouteByUrl(Route $route)
     {
-        $splitedUrl = explode('/', $this->Request->url());
+        $splitedUrl = explode('/', FacadesRequest::url());
         $splitedRouteUrl = explode('/', $route->getUrl());
 
         if (count($splitedUrl) != count($splitedRouteUrl))

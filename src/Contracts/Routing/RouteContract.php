@@ -62,4 +62,16 @@ interface RouteContract
      * @return Route
      */
     public function action(string $action): Route;
+
+
+
+
+
+    /**
+     * Add middleware to route
+     *
+     * @param  string|array $middleware Middleware
+     * @return Route
+     */
+    public function middleware(string|array $middlewares): Route;
 }

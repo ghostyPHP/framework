@@ -2,7 +2,7 @@
 
 namespace Ghosty\Foundation;
 
-use Ghosty\Container\Container;
+use Ghosty\Support\Facades\Container;
 use Ghosty\Contracts\Foundation\ApplicationContract;
 use Ghosty\Contracts\Foundation\Http\KernelContract;
 use Ghosty\Contracts\Http\RequestContract;
@@ -21,18 +21,18 @@ class Application implements ApplicationContract
     {
         $this->registerCoreServices();
 
-        $this->Kernel = Container::getInstance()->make(KernelContract::class);
+        $this->Kernel = Container::make(KernelContract::class);
     }
 
 
 
     private function registerCoreServices()
     {
-        Container::getInstance()->singleton(RouterContract::class, Router::class);
+        Container::singleton(RouterContract::class, Router::class);
 
-        Container::getInstance()->singleton(RouteContract::class, Route::class);
+        Container::singleton(RouteContract::class, Route::class);
 
-        Container::getInstance()->singleton(RequestContract::class, Request::class);
+        Container::singleton(RequestContract::class, Request::class);
     }
 
 

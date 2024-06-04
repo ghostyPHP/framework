@@ -2,8 +2,7 @@
 
 namespace Ghosty\Foundation\Http;
 
-use Ghosty\Container\Container;
-use Ghosty\Contracts\Foundation\ApplicationContract;
+use Ghosty\Support\Facades\Container;
 use Ghosty\Contracts\Foundation\Http\KernelContract;
 use Ghosty\Contracts\Http\RequestContract;
 use Ghosty\Contracts\Routing\RouterContract;
@@ -25,7 +24,7 @@ class Kernel implements KernelContract
     {
         require_once APP_PATH . '/routes/api.php';
 
-        Container::getInstance()->make(RouterContract::class)->dispatch();
+        Container::make(RouterContract::class)->dispatch();
     }
 
 
@@ -34,7 +33,17 @@ class Kernel implements KernelContract
     {
         foreach ($this->serviceProviders as $ServiceProvider)
         {
-            Container::getInstance()->make($ServiceProvider);
+            Container::make($ServiceProvider)->boot();
+        }
+    }
+
+
+
+    private function dispatchMiddlewares(array $middlewares)
+    {
+        foreach ($middlewares as $middleware)
+        {
+            Container::make($middleware)->handle();
         }
     }
 
@@ -43,16 +52,21 @@ class Kernel implements KernelContract
 
     public function handle(): string
     {
-        $Controller = Container::getInstance()
-            ->make(RequestContract::class)
+        $Middlewares = Container::make(RequestContract::class)
+            ->getRoute()
+            ->getMiddlewares();
+
+        $this->dispatchMiddlewares($Middlewares);
+
+
+        $Controller = Container::make(RequestContract::class)
             ->getRoute()
             ->getController();
 
-        $Action = Container::getInstance()
-            ->make(RequestContract::class)
+        $Action = Container::make(RequestContract::class)
             ->getRoute()
             ->getAction();
 
-        return Container::getInstance()->make($Controller)->$Action();
+        return Container::make($Controller)->$Action();
     }
 }
