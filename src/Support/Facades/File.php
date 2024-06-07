@@ -10,7 +10,7 @@ use Ghosty\Filesystem\Filesystem;
  * @method static bool put(string $path, string $data) Put data to file
  * @method static string add(string $path, string $data) Add data to file
  */
-class File
+class File extends Facade
 {
     public static function getFacadeName()
     {
