@@ -2,7 +2,7 @@
 
 namespace Ghosty\Foundation\Http;
 
-use Ghosty\Support\Facades\Container;
+use Ghosty\Container\Facades\Container;
 use Ghosty\Contracts\Foundation\Http\KernelContract;
 use Ghosty\Contracts\Http\RequestContract;
 use Ghosty\Contracts\Routing\RouterContract;

@@ -2,6 +2,8 @@
 
 namespace Ghosty\Support\Facades;
 
+use Ghosty\Container\Facades\Container;
+
 class Facade
 {
     public static function __callStatic($name, $arguments)
