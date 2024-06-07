@@ -50,7 +50,7 @@ class Kernel implements KernelContract
 
 
 
-    public function handle(): string
+    public function handle(): ?string
     {
         $Middlewares = Container::make(RequestContract::class)
             ->getRoute()
