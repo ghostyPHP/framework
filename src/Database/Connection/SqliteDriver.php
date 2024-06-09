@@ -9,7 +9,6 @@ class SqliteDriver implements DriverContract
 {
     public static function connect(string $host, int $port, string $database, string $username, string $password): PDO
     {
-        echo 'sqlite:' . $database;
         return new PDO('sqlite:' . $database);
     }
 }

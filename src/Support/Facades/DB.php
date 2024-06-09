@@ -10,7 +10,7 @@ use Ghosty\Database\Database;
  */
 class DB extends Facade
 {
-    public static function getFacadeName()
+    protected static function getFacadeName()
     {
         return Database::class;
     }
