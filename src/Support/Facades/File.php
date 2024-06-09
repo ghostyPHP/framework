@@ -12,7 +12,7 @@ use Ghosty\Filesystem\Filesystem;
  */
 class File extends Facade
 {
-    public static function getFacadeName()
+    protected static function getFacadeName()
     {
         return Filesystem::class;
     }
