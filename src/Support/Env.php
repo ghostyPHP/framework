@@ -16,7 +16,7 @@ class Env
 
         foreach ($env as $envKey => $envValue)
         {
-            if (!trim($envValue) == '')
+            if (!trim($envValue) == '' && str_contains($envValue, '='))
             {
                 $envArray[strstr($envValue, '=', true)] = trim(substr(strstr($envValue, '='), 1));
             }
