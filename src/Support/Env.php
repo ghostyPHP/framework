@@ -18,7 +18,7 @@ class Env
         {
             if (!trim($envValue) == '')
             {
-                $envArray[strstr($envValue, '=', true)] = substr(strstr($envValue, '='), 1);
+                $envArray[strstr($envValue, '=', true)] = trim(substr(strstr($envValue, '='), 1));
             }
         }
 
