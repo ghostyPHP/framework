@@ -22,7 +22,7 @@ class Connection implements ConnectionContract
     /**
      * Get driver
      *
-     * @return \Ghosty\Contracts\Database\Connection\DriverContract
+     * @return \Ghosty\Framework\Contracts\Database\Connection\DriverContract
      * 
      * @throws \DriverNotFoundException
      */

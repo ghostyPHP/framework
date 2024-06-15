@@ -11,6 +11,6 @@ class DatabaseServiceProvider
         /**
          * Bind connection as singleton
          */
-        Container::singleton(\Ghosty\Contracts\Database\Connection\ConnectionContract::class, \Ghosty\Database\Connection\Connection::class);
+        Container::singleton(\Ghosty\Framework\Contracts\Database\Connection\ConnectionContract::class, \Ghosty\Framework\Database\Connection\Connection::class);
     }
 }

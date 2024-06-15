@@ -12,7 +12,7 @@ class Database implements DatabaseContract
 {
     public function getPDO(): PDO
     {
-        /**@var \Ghosty\Contracts\Database\ConnectionContract*/
+        /**@var \Ghosty\Framework\Contracts\Database\ConnectionContract*/
         $Connection = Container::make(ConnectionContract::class);
 
         return $Connection->open(
