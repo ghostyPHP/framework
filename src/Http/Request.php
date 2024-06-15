@@ -1,9 +1,9 @@
 <?php
 
-namespace Ghosty\Http;
+namespace Ghosty\Framework\Http;
 
-use Ghosty\Contracts\Http\RequestContract;
-use Ghosty\Foundation\Routing\Route;
+use Ghosty\Framework\Contracts\Http\RequestContract;
+use Ghosty\Framework\Foundation\Routing\Route;
 
 class Request implements RequestContract
 {

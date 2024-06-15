@@ -1,8 +1,8 @@
 <?php
 
-namespace Ghosty\Support;
+namespace Ghosty\Framework\Support;
 
-use Ghosty\Support\Facades\File;
+use Ghosty\Framework\Support\Facades\File;
 
 class Env
 {

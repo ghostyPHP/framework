@@ -1,6 +1,6 @@
 <?php
 
-namespace Ghosty\Contracts\Filesystem;
+namespace Ghosty\Framework\Contracts\Filesystem;
 
 interface FilesystemContract
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Ghosty\Database;
+namespace Ghosty\Framework\Database;
 
 use Ghosty\Container\Facades\Container;
 

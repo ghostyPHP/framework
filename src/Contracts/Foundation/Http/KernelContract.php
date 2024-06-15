@@ -1,6 +1,6 @@
 <?php
 
-namespace Ghosty\Contracts\Foundation\Http;
+namespace Ghosty\Framework\Contracts\Foundation\Http;
 
 /**
  * @property array $serviceProviders Service Providers

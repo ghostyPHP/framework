@@ -1,16 +1,16 @@
 <?php
 
-namespace Ghosty\Foundation;
+namespace Ghosty\Framework\Foundation;
 
 use Ghosty\Container\Facades\Container;
-use Ghosty\Contracts\Foundation\ApplicationContract;
-use Ghosty\Contracts\Foundation\Http\KernelContract;
-use Ghosty\Contracts\Http\RequestContract;
-use Ghosty\Contracts\Routing\RouteContract;
-use Ghosty\Contracts\Routing\RouterContract;
-use Ghosty\Http\Request;
-use Ghosty\Routing\Route;
-use Ghosty\Routing\Router;
+use Ghosty\Framework\Contracts\Foundation\ApplicationContract;
+use Ghosty\Framework\Contracts\Foundation\Http\KernelContract;
+use Ghosty\Framework\Contracts\Http\RequestContract;
+use Ghosty\Framework\Contracts\Routing\RouteContract;
+use Ghosty\Framework\Contracts\Routing\RouterContract;
+use Ghosty\Framework\Http\Request;
+use Ghosty\Framework\Routing\Route;
+use Ghosty\Framework\Routing\Router;
 
 class Application implements ApplicationContract
 {

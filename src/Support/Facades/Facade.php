@@ -1,6 +1,6 @@
 <?php
 
-namespace Ghosty\Support\Facades;
+namespace Ghosty\Framework\Support\Facades;
 
 use Ghosty\Container\Facades\Container;
 

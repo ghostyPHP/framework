@@ -1,6 +1,6 @@
 <?php
 
-namespace Ghosty\Database\Connection;
+namespace Ghosty\Framework\Database\Connection;
 
 use Exception;
 

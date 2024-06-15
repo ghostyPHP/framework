@@ -4,7 +4,7 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Ghosty\\": "src/"
+            "Ghosty\\Framework\\": "src/"
         }
     },
     "authors": [

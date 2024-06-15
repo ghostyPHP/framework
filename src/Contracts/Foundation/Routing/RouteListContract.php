@@ -1,8 +1,8 @@
 <?php
 
-namespace Ghosty\Contracts\Foundation\Routing;
+namespace Ghosty\Framework\Contracts\Foundation\Routing;
 
-use Ghosty\Foundation\Routing\Route;
+use Ghosty\Framework\Foundation\Routing\Route;
 
 interface RouteListContract
 {

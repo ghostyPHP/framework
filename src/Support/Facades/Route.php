@@ -1,8 +1,8 @@
 <?php
 
-namespace Ghosty\Support\Facades;
+namespace Ghosty\Framework\Support\Facades;
 
-use Ghosty\Contracts\Routing\RouteContract;
+use Ghosty\Framework\Contracts\Routing\RouteContract;
 
 /**
  * @method static \Ghosty\Support\Facades\Route get(string $url)

@@ -1,6 +1,6 @@
 <?php
 
-namespace Ghosty\Contracts\Foundation;
+namespace Ghosty\Framework\Contracts\Foundation;
 
 interface ApplicationContract
 {

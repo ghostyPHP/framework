@@ -1,8 +1,8 @@
 <?php
 
-namespace Ghosty\Foundation\Routing;
+namespace Ghosty\Framework\Foundation\Routing;
 
-use Ghosty\Contracts\Foundation\Routing\RouteContract;
+use Ghosty\Framework\Contracts\Foundation\Routing\RouteContract;
 
 class Route implements RouteContract
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace Ghosty\Filesystem;
+namespace Ghosty\Framework\Filesystem;
 
-use Ghosty\Contracts\Filesystem\FilesystemContract;
+use Ghosty\Framework\Contracts\Filesystem\FilesystemContract;
 use RuntimeException;
 
 class Filesystem implements FilesystemContract

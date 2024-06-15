@@ -1,9 +1,9 @@
 <?php
 
-namespace Ghosty\Database\Connection;
+namespace Ghosty\Framework\Database\Connection;
 
-use Ghosty\Contracts\Database\Connection\ConnectionContract;
-use Ghosty\Support\Env;
+use Ghosty\Framework\Contracts\Database\Connection\ConnectionContract;
+use Ghosty\Framework\Support\Env;
 use PDO;
 
 class Connection implements ConnectionContract

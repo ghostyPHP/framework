@@ -1,8 +1,8 @@
 <?php
 
-namespace Ghosty\Contracts\Http;
+namespace Ghosty\Framework\Contracts\Http;
 
-use Ghosty\Foundation\Routing\Route;
+use Ghosty\Framework\Foundation\Routing\Route;
 
 interface RequestContract
 {

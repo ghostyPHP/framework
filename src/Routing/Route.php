@@ -1,10 +1,10 @@
 <?php
 
-namespace Ghosty\Routing;
+namespace Ghosty\Framework\Routing;
 
-use Ghosty\Contracts\Routing\RouteContract;
-use Ghosty\Foundation\Routing\Route as RoutingRoute;
-use Ghosty\Foundation\Routing\RouteList;
+use Ghosty\Framework\Contracts\Routing\RouteContract;
+use Ghosty\Framework\Foundation\Routing\Route as RoutingRoute;
+use Ghosty\Framework\Foundation\Routing\RouteList;
 
 class Route implements RouteContract
 {

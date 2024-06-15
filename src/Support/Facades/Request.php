@@ -1,9 +1,9 @@
 <?php
 
-namespace Ghosty\Support\Facades;
+namespace Ghosty\Framework\Support\Facades;
 
-use Ghosty\Contracts\Http\RequestContract;
-use Ghosty\Http\Request as HttpRequest;
+use Ghosty\Framework\Contracts\Http\RequestContract;
+use Ghosty\Framework\Http\Request as HttpRequest;
 
 /**
  * @method static string method()

@@ -1,8 +1,8 @@
 <?php
 
-namespace Ghosty\Support\Facades;
+namespace Ghosty\Framework\Support\Facades;
 
-use Ghosty\Filesystem\Filesystem;
+use Ghosty\Framework\Filesystem\Filesystem;
 
 
 /**

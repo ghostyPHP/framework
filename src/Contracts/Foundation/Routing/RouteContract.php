@@ -1,6 +1,6 @@
 <?php
 
-namespace Ghosty\Contracts\Foundation\Routing;
+namespace Ghosty\Framework\Contracts\Foundation\Routing;
 
 interface RouteContract
 {

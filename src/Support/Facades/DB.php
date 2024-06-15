@@ -1,8 +1,8 @@
 <?php
 
-namespace Ghosty\Support\Facades;
+namespace Ghosty\Framework\Support\Facades;
 
-use Ghosty\Database\Database;
+use Ghosty\Framework\Database\Database;
 
 /**
  * @method static \PDO getPDO() Get new connection

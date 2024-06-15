@@ -1,6 +1,6 @@
 <?php
 
-namespace Ghosty\Contracts\Database;
+namespace Ghosty\Framework\Contracts\Database;
 
 use PDO;
 

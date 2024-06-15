@@ -1,11 +1,11 @@
 <?php
 
-namespace Ghosty\Database;
+namespace Ghosty\Framework\Database;
 
 use Ghosty\Container\Facades\Container;
-use Ghosty\Contracts\Database\Connection\ConnectionContract;
-use Ghosty\Contracts\Database\DatabaseContract;
-use Ghosty\Support\Env;
+use Ghosty\Framework\Contracts\Database\Connection\ConnectionContract;
+use Ghosty\Framework\Contracts\Database\DatabaseContract;
+use Ghosty\Framework\Support\Env;
 use PDO;
 
 class Database implements DatabaseContract

@@ -1,8 +1,8 @@
 <?php
 
-namespace Ghosty\Database\Connection;
+namespace Ghosty\Framework\Database\Connection;
 
-use Ghosty\Contracts\Database\Connection\DriverContract;
+use Ghosty\Framework\Contracts\Database\Connection\DriverContract;
 use PDO;
 
 class PostgresqlDriver implements DriverContract

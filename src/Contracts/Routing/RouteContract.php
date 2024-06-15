@@ -1,9 +1,9 @@
 <?php
 
-namespace Ghosty\Contracts\Routing;
+namespace Ghosty\Framework\Contracts\Routing;
 
-use Ghosty\Foundation\Routing\RouteList;
-use Ghosty\Routing\Route;
+use Ghosty\Framework\Foundation\Routing\RouteList;
+use Ghosty\Framework\Routing\Route;
 
 interface RouteContract
 {

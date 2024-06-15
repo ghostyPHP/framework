@@ -1,11 +1,11 @@
 <?php
 
-namespace Ghosty\Foundation\Http;
+namespace Ghosty\Framework\Foundation\Http;
 
 use Ghosty\Container\Facades\Container;
-use Ghosty\Contracts\Foundation\Http\KernelContract;
-use Ghosty\Contracts\Http\RequestContract;
-use Ghosty\Contracts\Routing\RouterContract;
+use Ghosty\Framework\Contracts\Foundation\Http\KernelContract;
+use Ghosty\Framework\Contracts\Http\RequestContract;
+use Ghosty\Framework\Contracts\Routing\RouterContract;
 
 class Kernel implements KernelContract
 {
