@@ -3,15 +3,21 @@
 namespace Ghosty\Framework\Filesystem;
 
 use Ghosty\Framework\Contracts\Filesystem\FilesystemContract;
-use RuntimeException;
+use Ghosty\Framework\Exceptions\Filesystem\FileDoesNotExistException;
 
 class Filesystem implements FilesystemContract
 {
+
+    public function exists(string $path): bool
+    {
+        return file_exists($path);
+    }
+
     public function get(string $path): string
     {
         if (!file_exists($path))
         {
-            throw new RuntimeException('File does not exists');
+            throw new FileDoesNotExistException($path);
         }
 
         return file_get_contents($path);
@@ -19,17 +25,20 @@ class Filesystem implements FilesystemContract
 
 
 
-    public function put(string $path, string $data): bool
+    public function put(string $path, string $content): void
     {
-        return file_put_contents($path, $data) ? true : false;
+        file_put_contents($path, $content);
     }
 
 
 
-    public function add(string $path, string $data): bool
+    public function append(string $path, string $content): void
     {
-        $fileContent = file_exists($path) ? $this->get($path) : '';
+        $this->put($path, $this->get($path) . $content);
+    }
 
-        return $this->put($path, $fileContent . $data);
+    public function prepend(string $path, string $content): void
+    {
+        $this->put($path, $content . $this->get($path));
     }
 }

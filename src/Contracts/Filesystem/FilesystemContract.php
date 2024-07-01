@@ -4,43 +4,13 @@ namespace Ghosty\Framework\Contracts\Filesystem;
 
 interface FilesystemContract
 {
-    /**
-     * Get file content
-     *
-     * @param  string $path Path to file
-     * 
-     * @throws RuntimeException
-     * @return string
-     */
+    public function exists(string $path): bool;
+
     public function get(string $path): string;
 
+    public function put(string $path, string $content): void;
 
+    public function append(string $path, string $content): void;
 
-
-
-    /**
-     * Put data to file
-     *
-     * @param  mixed $path Path to file
-     * @param  mixed $data Data
-     * 
-     * @throws RuntimeException
-     * @return bool
-     */
-    public function put(string $path, string $data): bool;
-
-
-
-
-
-    /**
-     * Add data to file
-     *
-     * @param  mixed $path Path to file
-     * @param  mixed $data Data
-     * 
-     * @throws RuntimeException
-     * @return bool
-     */
-    public function add(string $path, string $data): bool;
+    public function prepend(string $path, string $content): void;
 }

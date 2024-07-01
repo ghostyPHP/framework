@@ -2,96 +2,30 @@
 
 namespace Ghosty\Framework\Routing;
 
-use Exception;
-use Ghosty\Container\Container;
-use Ghosty\Framework\Contracts\Http\RequestContract;
-use Ghosty\Framework\Contracts\Routing\RouteContract;
-use Ghosty\Framework\Routing\RouteNotFoundExeption;
+use Ghosty\Component\HttpFoundation\Contracts\RequestContract;
+use Ghosty\Component\Routing\Contracts\RouterContract as ContractsRouterContract;
+use Ghosty\Component\Routing\Contracts\Stacks\RouteStackContract;
+use Ghosty\Component\Routing\Router as RoutingRouter;
+use Ghosty\Container\Facades\Container;
 use Ghosty\Framework\Contracts\Routing\RouterContract;
-use Ghosty\Framework\Foundation\Routing\Route;
-use Ghosty\Framework\Foundation\Routing\RouteList;
-use Ghosty\Framework\Http\Request;
-use Ghosty\Framework\Support\Facades\Request as FacadesRequest;
+use Ghosty\Framework\Support\Facades\Config;
 
 class Router implements RouterContract
 {
-    private RouteList $RouteList;
-
-
-    public function __construct(private RouteContract $Route, private RequestContract $Request)
+    public function __construct(private RequestContract $request)
     {
-        $this->RouteList = $this->Route->getRoutes();
     }
 
-
-
-    public function dispatch()
+    public function createRouter(): ContractsRouterContract
     {
-        $this->Request->setRoute($this->determine());
+        $this->loadRoutes();
+        $routeStack = Config::get('routing', 'return_routes', false) ? $this->loadRoutes() : Container::make(\Ghosty\Component\Routing\Contracts\Stacks\RouteStackContract::class);
+
+        return new RoutingRouter($this->request, $routeStack);
     }
 
-
-
-    private function determine()
+    private function loadRoutes(): void
     {
-        while (true)
-        {
-            try
-            {
-                $Route = $this->RouteList->pop();
-                if ($this->validateRoute($Route))
-                {
-                    return $Route;
-                }
-            }
-            catch (Exception $e)
-            {
-                throw new RouteNotFoundExeption('Route ' . FacadesRequest::url() . ' not found');
-            }
-        }
-    }
-
-
-    private function validateRoute(Route $route)
-    {
-        return $this->validateRouteByMethod($route) && $this->validateRouteByUrl($route);
-    }
-
-
-
-    private function validateRouteByUrl(Route $route)
-    {
-        $splitedUrl = explode('/', FacadesRequest::url());
-        $splitedRouteUrl = explode('/', $route->getUrl());
-
-        if (count($splitedUrl) != count($splitedRouteUrl))
-        {
-            return false;
-        }
-
-
-        foreach ($splitedRouteUrl as $splitedRouteUrlKey => $splitedRouteUrlEl)
-        {
-            if ($splitedRouteUrlEl[0] == '{' && $splitedRouteUrlEl[strlen($splitedRouteUrlEl) - 1] == '}')
-            {
-                continue;
-            }
-
-            if ($splitedUrl[$splitedRouteUrlKey] != $splitedRouteUrlEl)
-            {
-                return false;
-            }
-        }
-
-        return true;
-    }
-
-
-
-
-
-    private function validateRouteByMethod(Route $route)
-    {
-        return $route->getMethod() == $this->Request->method();
+        require_once APP_PATH . '/' . Config::get('routing', 'routes', '/routes/api.php');
     }
 }

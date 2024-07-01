@@ -3,21 +3,23 @@
 namespace Ghosty\Framework\Support\Facades;
 
 use Ghosty\Container\Facades\Container;
+use Ghosty\Framework\Exceptions\Support\Facades\FacadeDoesNotExistException;
+use Ghosty\Framework\Exceptions\Support\Facades\FacadeDoesNotImplementMethodException;
 
-class Facade
+abstract class Facade
 {
-    public static function __callStatic($name, $arguments)
+    protected static function getFacadeAccessor()
     {
-        $instance = Container::make(static::getFacadeName());
-
-        return $instance->$name(...$arguments);
+        throw new FacadeDoesNotImplementMethodException(static::class);
     }
 
-
-    public function __call($name, $arguments)
+    public static function __callStatic($name, $arguments)
     {
-        $instance = Container::make(static::getFacadeName());
+        if (!class_exists(static::getFacadeAccessor()))
+        {
+            throw new FacadeDoesNotExistException(static::class);
+        }
 
-        return $instance->$name(...$arguments);
+        return Container::make(static::getFacadeAccessor())->$name(...$arguments);
     }
 }

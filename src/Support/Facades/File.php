@@ -2,18 +2,17 @@
 
 namespace Ghosty\Framework\Support\Facades;
 
-use Ghosty\Framework\Filesystem\Filesystem;
-
-
 /**
+ * @method static bool exists(string $path) Checks if file exists
+ * @method static void put(string $path, string $content) Put content to file
  * @method static string get(string $path) Get file content
- * @method static bool put(string $path, string $data) Put data to file
- * @method static string add(string $path, string $data) Add data to file
+ * @method static void append(string $path, string $content) Appdend content to file
+ * @method static void prepend(string $path, string $content) Prepend content to file
  */
 class File extends Facade
 {
-    protected static function getFacadeName()
+    protected static function getFacadeAccessor()
     {
-        return Filesystem::class;
+        return \Ghosty\Framework\Filesystem\Filesystem::class;
     }
 }
