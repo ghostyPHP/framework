@@ -6,6 +6,6 @@ class FileDoesNotExistException extends \RuntimeException
 {
     public function __construct(string $file)
     {
-        parent::__construct("File $file does not exist!");
+        parent::__construct("File '$file' does not exist!");
     }
 }
