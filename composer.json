@@ -12,5 +12,12 @@
             "name": "AnvilM",
             "email": "211anvil112@gmail.com"
         }
-    ]
+    ],
+    "require": {
+        "ghosty/container": "^1.0",
+        "ghosty/routing": "^1.0",
+        "ghosty/http-foundation": "^1.0",
+        "ghosty/log": "^1.0",
+        "ghosty/filesystem": "^1.0"
+    }
 }

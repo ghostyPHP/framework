@@ -2,7 +2,7 @@
 
 namespace Ghosty\Framework\Exceptions\Support\Facades;
 
-class FacadeDoesNotImplementMethodException extends \RuntimeException
+class FacadeDoesNotImplementMethodException extends \Exception
 {
     public function __construct(string $facade)
     {

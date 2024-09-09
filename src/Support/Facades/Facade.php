@@ -2,8 +2,8 @@
 
 namespace Ghosty\Framework\Support\Facades;
 
-use Ghosty\Container\Facades\Container;
-use Ghosty\Framework\Exceptions\Support\Facades\FacadeDoesNotExistException;
+use Ghosty\Framework\Container\Container;
+use Ghosty\Framework\Exceptions\Support\Facades\FacadeDoesNotExistsException;
 use Ghosty\Framework\Exceptions\Support\Facades\FacadeDoesNotImplementMethodException;
 
 abstract class Facade
@@ -17,7 +17,7 @@ abstract class Facade
     {
         if (!class_exists(static::getFacadeAccessor()))
         {
-            throw new FacadeDoesNotExistException(static::class);
+            throw new FacadeDoesNotExistsException(static::class);
         }
 
         return Container::make(static::getFacadeAccessor())->$name(...$arguments);

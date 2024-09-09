@@ -3,30 +3,25 @@
 namespace Ghosty\Framework\Routing;
 
 use Ghosty\Component\HttpFoundation\Contracts\RequestContract;
-use Ghosty\Component\Routing\Contracts\RouterContract as ContractsRouterContract;
+use Ghosty\Component\Routing\Contracts\RouterContract;
 use Ghosty\Component\Routing\Contracts\Stacks\RouteStackContract;
 use Ghosty\Component\Routing\Router as RoutingRouter;
-use Ghosty\Container\Facades\Container;
-use Ghosty\Framework\Contracts\Routing\RouterContract;
-use Ghosty\Framework\Support\Facades\Config;
+use Ghosty\Component\Routing\Stacks\RouteStack;
+use Ghosty\Container\Binding;
+use Ghosty\Framework\Container\Container;
+use Ghosty\Framework\Foundation\Application;
 
-class Router implements RouterContract
+class Router
 {
-    public function __construct(private RequestContract $request)
+    public function create(RequestContract $request): RouterContract
     {
+        Container::bind(RouteStackContract::class, (new Binding(RouteStack::class))->singleton());
+        $this->laodRoutes();
+        return new RoutingRouter($request, Container::make(RouteStackContract::class));
     }
 
-    public function createRouter(): ContractsRouterContract
+    private function laodRoutes(): void
     {
-
-        $routeStack = $this->loadRoutes();
-        $routeStack = Config::get('routing', 'return', false) ? $routeStack : Container::make(\Ghosty\Component\Routing\Contracts\Stacks\RouteStackContract::class);
-
-        return new RoutingRouter($this->request, $routeStack);
-    }
-
-    private function loadRoutes()
-    {
-        return require_once APP_PATH . '/' . Config::get('routing', 'routes', '/routes/api.php');
+        require_once Container::make(Application::class)->getRoutePath();
     }
 }

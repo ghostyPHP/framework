@@ -1,13 +1,12 @@
 <?php
 
-namespace Ghosty\Framework\Middleware;
+namespace Ghosty\Framework\Http\Middleware;
 
 use Ghosty\Component\Routing\Contracts\Bags\MiddlewareBagContract;
-use Ghosty\Container\Facades\Container;
-use Ghosty\Framework\Contracts\Middleware\MiddlewareContract;
-use Ghosty\Framework\Exceptions\Middleware\MiddlewareDoesNotExistException;
+use Ghosty\Framework\Container\Container;
+use Ghosty\Framework\Exceptions\Http\Middleware\MiddlewareDoesNotExistsException;
 
-class Middleware implements MiddlewareContract
+class Middleware
 {
     public function dispatch(MiddlewareBagContract $middlewares): void
     {
@@ -15,7 +14,7 @@ class Middleware implements MiddlewareContract
         {
             if (!class_exists($middleware))
             {
-                throw new MiddlewareDoesNotExistException($middleware);
+                throw new MiddlewareDoesNotExistsException($middleware);
             }
             Container::make($middleware);
         }

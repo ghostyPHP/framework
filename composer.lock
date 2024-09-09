@@ -4,8 +4,387 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "66a0f2fc6c5bdfca15cd44dfc4eb728f",
-    "packages": [],
+    "content-hash": "0bf8287cd68765ac5eb0feae0c4e2290",
+    "packages": [
+        {
+            "name": "ghosty/bag",
+            "version": "v1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ghostyPHP/Bag.git",
+                "reference": "d754bfc24da9835d3aafaacbc0f29ce8bd71360b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ghostyPHP/Bag/zipball/d754bfc24da9835d3aafaacbc0f29ce8bd71360b",
+                "reference": "d754bfc24da9835d3aafaacbc0f29ce8bd71360b",
+                "shasum": ""
+            },
+            "type": "package",
+            "autoload": {
+                "psr-4": {
+                    "Ghosty\\Component\\Bag\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "AnvilM",
+                    "email": "211anvil112@gmail.com"
+                }
+            ],
+            "support": {
+                "issues": "https://github.com/ghostyPHP/Bag/issues",
+                "source": "https://github.com/ghostyPHP/Bag/tree/v1.1.0"
+            },
+            "time": "2024-09-06T11:46:02+00:00"
+        },
+        {
+            "name": "ghosty/container",
+            "version": "v1.0.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ghostyPHP/Container.git",
+                "reference": "271b0ce9fe66c76364a1c4e4fca271f10cfe98ec"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ghostyPHP/Container/zipball/271b0ce9fe66c76364a1c4e4fca271f10cfe98ec",
+                "reference": "271b0ce9fe66c76364a1c4e4fca271f10cfe98ec",
+                "shasum": ""
+            },
+            "require": {
+                "ghosty/bag": "^1.1",
+                "psr/container": "^2.0"
+            },
+            "type": "package",
+            "autoload": {
+                "psr-4": {
+                    "Ghosty\\Container\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "AnvilM",
+                    "email": "211anvil112@gmail.com"
+                }
+            ],
+            "description": "Simple small dependency injection container",
+            "keywords": [
+                "container",
+                "dependency injection",
+                "di"
+            ],
+            "support": {
+                "issues": "https://github.com/ghostyPHP/Container/issues",
+                "source": "https://github.com/ghostyPHP/Container/tree/v1.0.8"
+            },
+            "time": "2024-09-06T23:31:45+00:00"
+        },
+        {
+            "name": "ghosty/filesystem",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ghostyPHP/Filesystem.git",
+                "reference": "06cc3bf816cfa536171677609d8a8b9c81ee89a4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ghostyPHP/Filesystem/zipball/06cc3bf816cfa536171677609d8a8b9c81ee89a4",
+                "reference": "06cc3bf816cfa536171677609d8a8b9c81ee89a4",
+                "shasum": ""
+            },
+            "type": "package",
+            "autoload": {
+                "psr-4": {
+                    "Ghosty\\Filesystem\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "AnvilM",
+                    "email": "211anvil112@gmail.com"
+                }
+            ],
+            "support": {
+                "issues": "https://github.com/ghostyPHP/Filesystem/issues",
+                "source": "https://github.com/ghostyPHP/Filesystem/tree/v1.0.0"
+            },
+            "time": "2024-09-08T20:03:50+00:00"
+        },
+        {
+            "name": "ghosty/http-foundation",
+            "version": "v1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ghostyPHP/HttpFoundation.git",
+                "reference": "b7d2fe954e1e7b8ffcb1deef9a5467828eb876e9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ghostyPHP/HttpFoundation/zipball/b7d2fe954e1e7b8ffcb1deef9a5467828eb876e9",
+                "reference": "b7d2fe954e1e7b8ffcb1deef9a5467828eb876e9",
+                "shasum": ""
+            },
+            "type": "package",
+            "autoload": {
+                "psr-4": {
+                    "Ghosty\\Component\\HttpFoundation\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "AnvilM",
+                    "email": "211anvil112@gmail.com"
+                }
+            ],
+            "description": "Ghosty Http Foundation Component",
+            "support": {
+                "issues": "https://github.com/ghostyPHP/HttpFoundation/issues",
+                "source": "https://github.com/ghostyPHP/HttpFoundation/tree/v1.0.3"
+            },
+            "time": "2024-06-30T16:37:13+00:00"
+        },
+        {
+            "name": "ghosty/log",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ghostyPHP/Log.git",
+                "reference": "a0eb9d9d2b66a7f54ff6a6245e16b0d1536c3fed"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ghostyPHP/Log/zipball/a0eb9d9d2b66a7f54ff6a6245e16b0d1536c3fed",
+                "reference": "a0eb9d9d2b66a7f54ff6a6245e16b0d1536c3fed",
+                "shasum": ""
+            },
+            "require": {
+                "ghosty/container": "^1.0",
+                "psr/container": "^2.0",
+                "psr/log": "^3.0"
+            },
+            "type": "package",
+            "autoload": {
+                "psr-4": {
+                    "Anvil\\Log\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "AnvilM",
+                    "email": "211anvil112@gmail.com"
+                }
+            ],
+            "support": {
+                "issues": "https://github.com/ghostyPHP/Log/issues",
+                "source": "https://github.com/ghostyPHP/Log/tree/v1.0.1"
+            },
+            "time": "2024-09-06T23:22:34+00:00"
+        },
+        {
+            "name": "ghosty/routing",
+            "version": "v1.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ghostyPHP/Routing.git",
+                "reference": "1227bd0ed40c40941a795ab0e98f78dccd0b934d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ghostyPHP/Routing/zipball/1227bd0ed40c40941a795ab0e98f78dccd0b934d",
+                "reference": "1227bd0ed40c40941a795ab0e98f78dccd0b934d",
+                "shasum": ""
+            },
+            "require": {
+                "ghosty/bag": "^1.0",
+                "ghosty/http-foundation": "^1.0",
+                "ghosty/stack": "^1.0"
+            },
+            "type": "package",
+            "autoload": {
+                "psr-4": {
+                    "Ghosty\\Component\\Routing\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "AnvilM",
+                    "email": "211anvil112@gmail.com"
+                }
+            ],
+            "description": "The Ghosty Routing component maps an HTTP request to a set of configuration variables.",
+            "support": {
+                "issues": "https://github.com/ghostyPHP/Routing/issues",
+                "source": "https://github.com/ghostyPHP/Routing/tree/v1.0.5"
+            },
+            "time": "2024-07-03T22:40:47+00:00"
+        },
+        {
+            "name": "ghosty/stack",
+            "version": "v1.0.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ghostyPHP/Stack.git",
+                "reference": "63b0a76382c9b94b7ee9471a48b8174989215cdd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ghostyPHP/Stack/zipball/63b0a76382c9b94b7ee9471a48b8174989215cdd",
+                "reference": "63b0a76382c9b94b7ee9471a48b8174989215cdd",
+                "shasum": ""
+            },
+            "type": "package",
+            "autoload": {
+                "psr-4": {
+                    "Ghosty\\Component\\Stack\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "AnvilM",
+                    "email": "211anvil112@gmail.com"
+                }
+            ],
+            "description": "The Ghosty Stack component",
+            "support": {
+                "issues": "https://github.com/ghostyPHP/Stack/issues",
+                "source": "https://github.com/ghostyPHP/Stack/tree/v1.0.8"
+            },
+            "time": "2024-07-03T22:30:05+00:00"
+        },
+        {
+            "name": "psr/container",
+            "version": "2.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/container.git",
+                "reference": "c71ecc56dfe541dbd90c5360474fbc405f8d5963"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/container/zipball/c71ecc56dfe541dbd90c5360474fbc405f8d5963",
+                "reference": "c71ecc56dfe541dbd90c5360474fbc405f8d5963",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\Container\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "https://www.php-fig.org/"
+                }
+            ],
+            "description": "Common Container Interface (PHP FIG PSR-11)",
+            "homepage": "https://github.com/php-fig/container",
+            "keywords": [
+                "PSR-11",
+                "container",
+                "container-interface",
+                "container-interop",
+                "psr"
+            ],
+            "support": {
+                "issues": "https://github.com/php-fig/container/issues",
+                "source": "https://github.com/php-fig/container/tree/2.0.2"
+            },
+            "time": "2021-11-05T16:47:00+00:00"
+        },
+        {
+            "name": "psr/log",
+            "version": "3.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/log.git",
+                "reference": "79dff0b268932c640297f5208d6298f71855c03e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/log/zipball/79dff0b268932c640297f5208d6298f71855c03e",
+                "reference": "79dff0b268932c640297f5208d6298f71855c03e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\Log\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "https://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interface for logging libraries",
+            "homepage": "https://github.com/php-fig/log",
+            "keywords": [
+                "log",
+                "psr",
+                "psr-3"
+            ],
+            "support": {
+                "source": "https://github.com/php-fig/log/tree/3.0.1"
+            },
+            "time": "2024-08-21T13:31:24+00:00"
+        }
+    ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",

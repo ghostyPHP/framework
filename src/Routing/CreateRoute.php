@@ -2,16 +2,15 @@
 
 namespace Ghosty\Framework\Routing;
 
+use Ghosty\Component\Routing\Contracts\Stacks\RouteStackContract;
+use Ghosty\Component\Routing\Route;
+use Ghosty\Framework\Container\Container;
 use Ghosty\Component\Routing\Bags\MiddlewareBag;
 use Ghosty\Component\Routing\Bags\ParameterBag;
 use Ghosty\Component\Routing\Contracts\Bags\MiddlewareBagContract;
 use Ghosty\Component\Routing\Contracts\Bags\ParameterBagContract;
-use Ghosty\Component\Routing\Contracts\Stacks\RouteStackContract;
-use Ghosty\Component\Routing\Route;
-use Ghosty\Container\Facades\Container;
-use Ghosty\Framework\Contracts\Routing\CreateRouteContract;
 
-class CreateRoute implements CreateRouteContract
+class CreateRoute
 {
     public function get(string $uri): self
     {
