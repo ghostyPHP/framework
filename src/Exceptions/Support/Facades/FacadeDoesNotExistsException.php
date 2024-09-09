@@ -2,7 +2,7 @@
 
 namespace Ghosty\Framework\Exceptions\Support\Facades;
 
-class FacadeDoesNotExistException extends \RuntimeException
+class FacadeDoesNotExistsException extends \Exception
 {
     public function __construct(string $facade)
     {
